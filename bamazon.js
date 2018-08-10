@@ -56,7 +56,9 @@ var optionsCustomer = function (res) {
                 }).then(function (answer) {
                     if ((res[id].stockquantity - answer.quant) > 0) {
                         connection.query("UPDATE products SET stockquantity='"+(res[id].stockquantity - answer.quant)+"' WHERE productname= '"+product+"'",function(err,res2){
-                            console.log("Product Bought!")
+                          var total = answer.quant * res[id].price;
+
+                            console.log("Product Bought! Totla is "+"$"+ total)
                             createTable();
                         })
                         
